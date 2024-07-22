@@ -1,4 +1,56 @@
 {% extends 'header.html' %} {% block content %}
+
+<style> 
+
+    /*creo un estilo para el loader, lo centro, le doy el color de fondo, etc*/
+    .loader{
+        position:fixed;
+        top: 0;
+        left:0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #413f3f; 
+        z-index: 1000; /*agregado para que el spinner se vea sobre todo el contenido de la web*/
+        transition: opacity 0.75s, visibility 0.75s; /*agrego la transición para que se desvanezca en lugar de desaparecer*/
+    }
+
+    /*defino la clase que va a sacar el spinner cuando termine la carga*/
+
+    .loader--hidden {
+        opacity: 0; /*le saco toda la opacidad*/
+        visibility: hidden; 
+    }
+
+    /*::after crea un pseudoelemento que se puede modificar en css sin modificar el codigo en html*/
+    .loader::after { 
+        content: "";
+        width: 75px;
+        height: 75px;
+        border: 15px solid #ddd;
+        border-top-color: rgb(107, 171, 197);
+        border-radius: 50%;
+        animation: loading 0.75s ease infinite; /*la rotación es en 0.75s con iteraciones infinitas*/
+    } 
+
+    /*defino la animación del spinner con @keyframes*/
+
+    @keyframes loading { 
+        from { transform: rotate(0turn) } /*va desde una rotación de 0*/
+        to {transform: rotate(1turn);} /*a una rotación completa*/
+    }
+
+</style>
+
+
+
+
+
+<body>
+<div class="loader"></div> <!--para el spinner de carga-->   
+
 <main>
     <h1 class="text-center">Galería de Imágenes de la NASA</h1>
     <div class="d-flex justify-content-center" style="margin-bottom: 1%">
@@ -39,4 +91,16 @@
         {% endfor %}
     </div>
 </main>
+<!--creo el script del spinner para que funcione con la carga de las imágenes (al final para que 
+desaparezca SOLO cuando terminan de cargar todas las imagenes)-->
+
+<script>
+
+    window.addEventListener("load", () => {
+        document.querySelector(".loader").classList.add("loader--hidden");
+    });
+    
+</script>
+
+</body>
 {% endblock %}
