@@ -4,6 +4,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
+
 .table-responsive {
     margin: 30px 0;
 }
@@ -139,4 +141,21 @@ table.table td i {
     float: left;
     margin-top: 6px;
     font-size: 95%;
+}
+.navbar-brand {
+    color:#666; /* Color del texto predeterminado */
+    text-decoration: none; /* Quita el subrayado del enlace */
+}
+
+.navbar-brand:hover {
+    color:#ddd; /* Color del texto al pasar el cursor */
+}
+.card {
+    border: 5px solid #888; /* Color gris y ancho de 2px */
+
+}
+.card-body {
+    background-color:#a0a5b1; /* Fondo gris claro para el texto */
+    padding: 15px; /* Espaciado interno del texto */
+    color: black;
 }

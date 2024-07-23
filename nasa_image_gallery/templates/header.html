@@ -8,6 +8,28 @@
     {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %} {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style> /* colocando esto aseguro que el fondo se vea en todas las páginas en las que se extienda header.html */
+        body {
+            background-image: url('{% static "imagen/fondo.jpg" %}');
+            background-size:contain;
+            background-position: center;
+            z-index: -1;
+        }
+        
+/* agrego clase login-page para poder modificar el fondo solo de esa página */
+
+        body.login-page { 
+            background-size:cover; /* Cambia el tamaño del fondo solo para login.html */
+            z-index: -1;
+        }
+
+        body.favourites-page { 
+            background-size:cover; /* Cambia el tamaño del fondo solo para favourites.html */
+            z-index: -1;
+        }
+
+
+    </style>
 </head>
 
 <body>
